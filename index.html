@@ -1,188 +1,202 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Sottopelle Brand</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
-body {
-  margin: 0;
-  background-color: #111;
-  color: #f3f3f3;
-  font-family: 'Montserrat', sans-serif;
-}
-  header {
-    background-color: #000;
-    padding: 60px 20px 40px;
-    text-align: center;
-    position: relative;
-  }
-  .header-bar {
-    position: absolute;
-    top: 15px;
-    left: 20px;
-  }
- .welcome-link {
-  color: #ccc;
-  text-decoration: none;
-  font-size: 1.2rem;        /* più grande */
-  font-weight: bold;        /* grassetto */
-  letter-spacing: 0.5px;
-  transition: color 0.3s ease;
-}
-.subtitle-small {
-  margin: 4px 0 0;
-  font-size: 0.75rem;
-  color: #aaa;
-  font-weight: 400;
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sottopelle Brand</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background-color: #111;
+      color: #f3f3f3;
+      font-family: 'Montserrat', sans-serif;
+    }
+    header {
+      background-color: #000;
+      padding: 60px 20px 40px;
+      text-align: center;
+      position: relative;
+    }
+    .header-bar {
+      position: absolute;
+      top: 15px;
+      left: 20px;
+    }
+    .welcome-link {
+      color: #ccc;
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      transition: color 0.3s ease;
+    }
+    .subtitle-small {
+      margin: 4px 0 0;
+      font-size: 0.75rem;
+      color: #aaa;
+      font-weight: 400;
+    }
+    .welcome-link:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+    header img {
+      max-width: 180px;
+      margin-bottom: 15px;
+    }
+    p.subtitle {
+      margin: 0;
+      font-size: 1rem;
+      color: #aaa;
+    }
+    main {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+    .product {
+      background-color: #1c1c1c;
+      border-radius: 12px;
+      overflow: hidden;
+      text-align: center;
+      padding-bottom: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      position: relative;
+      cursor: pointer;
+    }
+    .product .image-container {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
+    .product img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: opacity 0.5s ease;
+    }
+    .product img.front {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .product:hover img.retro {
+      opacity: 0;
+    }
+    .product:hover img.front {
+      opacity: 1;
+    }
+    .product h3 {
+      margin: 15px 0 5px;
+      font-size: 1.2rem;
+    }
+    .product p {
+      color: #aaa;
+      font-size: 0.9rem;
+      padding: 0 10px;
+    }
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 0.9rem;
+      color: #777;
+    }
+    a {
+      color: #f3f3f3;
+      text-decoration: underline;
+    }
 
-  .welcome-link:hover {
-    color: #fff;
-    text-decoration: underline;
-  }
-  header img {
-    max-width: 180px;
-    margin-bottom: 15px;
-  }
-  p.subtitle {
-    margin: 0;
-    font-size: 1rem;
-    color: #aaa;
-  }
-  main {
-    max-width: 1000px;
-    margin: 40px auto;
-    padding: 0 20px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-  }
-  .product {
-    background-color: #1c1c1c;
-    border-radius: 12px;
-    overflow: hidden;
-    text-align: center;
-    padding-bottom: 20px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-    position: relative;
-    cursor: pointer;
-  }
-  .product .image-container {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-  }
-  .product img {
-    width: 100%;
-    height: auto;
-    display: block;
-    transition: opacity 0.5s ease;
-  }
-  .product img.front {
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    pointer-events: none;
-  }
-  .product:hover img.retro {
-    opacity: 0;
-  }
-  .product:hover img.front {
-    opacity: 1;
-  }
-  .product h3 {
-    margin: 15px 0 5px;
-    font-size: 1.2rem;
-  }
-  .product p {
-    color: #aaa;
-    font-size: 0.9rem;
-    padding: 0 10px;
-  }
-  footer {
-    text-align: center;
-    padding: 40px 20px;
-    font-size: 0.9rem;
-    color: #777;
-  }
-  a {
-    color: #f3f3f3;
-    text-decoration: underline;
-  }
-  /* Lightbox */
-  #lightbox {
-    display: none;
-    position: fixed;
-    top:0; left:0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.8);
-    z-index: 1000;
-    justify-content: center;
-    align-items: center;
-  }
-  #lightbox .content {
-    display: flex;
-    gap: 40px;
-    max-width: 90vw;
-    max-height: 80vh;
-  }
-  #lightbox img {
-    max-width: 40vw;
-    max-height: 80vh;
-    border-radius: 10px;
-    object-fit: contain;
-  }
-  #lightbox .close-btn {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    font-size: 2rem;
-    color: #fff;
-    cursor: pointer;
-  }
-  .size-guide {
-  max-width: 900px;
-  margin: 60px auto;
-  padding: 0 20px;
-  color: #eee;
-  text-align: center;
-}
+    /* Lightbox */
+    #lightbox {
+      display: none;
+      position: fixed;
+      top:0; left:0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      z-index: 1000;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+      box-sizing: border-box;
+      text-align: center;
+    }
+    #lightbox .content {
+      display: flex;
+      gap: 40px;
+      max-width: 90vw;
+      max-height: 60vh;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    #lightbox img {
+      max-width: 40vw;
+      max-height: 60vh;
+      border-radius: 10px;
+      object-fit: contain;
+    }
+    #lightbox .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+    }
+    #lightbox-description {
+      max-width: 700px;
+      margin-top: 20px;
+      color: #ccc;
+      font-size: 0.95rem;
+      text-align: center;
+      white-space: pre-line;
+    }
 
-.size-guide h2 {
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-}
+    .size-guide {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 0 20px;
+      color: #eee;
+      text-align: center;
+    }
 
-.size-guide table {
-  width: 100%;
-  border-collapse: collapse;
-  border: 2px solid #777;
-  background-color: #1a1a1a;
-  border-radius: 8px;
-  overflow: hidden;
-}
+    .size-guide h2 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
 
-.size-guide th,
-.size-guide td {
-  padding: 12px;
-  border: 1px solid #777;
-  font-weight: 500;
-}
+    .size-guide table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 2px solid #777;
+      background-color: #1a1a1a;
+      border-radius: 8px;
+      overflow: hidden;
+    }
 
-.size-guide th {
-  background-color: #2c2c2c;
-  color: #f3f3f3;
-}
+    .size-guide th,
+    .size-guide td {
+      padding: 12px;
+      border: 1px solid #777;
+      font-weight: 500;
+    }
 
-.size-guide td {
-  color: #ddd;
-}
+    .size-guide th {
+      background-color: #2c2c2c;
+      color: #f3f3f3;
+    }
 
-</style>
+    .size-guide td {
+      color: #ddd;
+    }
+  </style>
 </head>
 <body>
 
@@ -196,7 +210,16 @@ body {
 
 <main>
 
-  <div class="product" onclick="openLightbox('tshirt1-front.png','tshirt1.png')">
+  <div class="product" onclick="openLightbox('tshirt1-front.png','tshirt1.png', `Lo so, è più facile a dirsi che a farsi. Per questo non ti chiedo di
+prendere tutto con ottimismo, ma ti chiedo anche solo per un
+attimo di immaginare un altro finale. Non devi sempre e solo
+proteggerti dall’impatto. Puoi anche goderti l’atterraggio.
+Lo so che hai già previsto le conseguenze peggiori, ma prova
+a chiederti: quali sono i veri pericoli che ho paura di incontrare?
+Da cosa sto sfuggendo? Cosa c’è che rende più facile
+credere alla caduta che al lieto fine? Il pessimismo non
+è realismo, perché molto spesso la realtà è meno crudele
+di come l’avevamo immaginata. Lasciati sorprendere.` , event)">
     <div class="image-container">
       <img src="tshirt1.png" alt="T-shirt retro" class="retro" />
       <img src="tshirt1-front.png" alt="T-shirt fronte" class="front" />
@@ -205,7 +228,17 @@ body {
     <p>Passa sopra col mouse per vedere il fronte. Clicca per ingrandire.</p>
   </div>
 
-  <div class="product" onclick="openLightbox('tshirt2-front.png','tshirt2.png')">
+
+  <div class="product" onclick="openLightbox('tshirt2-front.png','tshirt2.png', `Lo so, è più facile a dirsi che a farsi. Per questo non ti chiedo di
+prendere tutto con ottimismo, ma ti chiedo anche solo per un
+attimo di immaginare un altro finale. Non devi sempre e solo
+proteggerti dall’impatto. Puoi anche goderti l’atterraggio.
+Lo so che hai già previsto le conseguenze peggiori, ma prova
+a chiederti: quali sono i veri pericoli che ho paura di incontrare?
+Da cosa sto sfuggendo? Cosa c’è che rende più facile
+credere alla caduta che al lieto fine? Il pessimismo non
+è realismo, perché molto spesso la realtà è meno crudele
+di come l’avevamo immaginata. Lasciati sorprendere.` , event)">
     <div class="image-container">
       <img src="tshirt2.png" alt="T-shirt retro" class="retro" />
       <img src="tshirt2-front.png" alt="T-shirt fronte" class="front" />
@@ -214,8 +247,8 @@ body {
     <p>Passa sopra col mouse per vedere il fronte. Clicca per ingrandire.</p>
   </div>
 
-  <div class="product" onclick="openLightbox('tshirt3-front.png','tshirt3.png')">
-    <div class="image-container">
+  <div class="product" onclick="openLightbox('tshirt3-front.png','tshirt3.png', 'Che tu nel buio ti ci sia ritrovat* o ti ci sia nascost*, fa si che quel buio non ti definisca, fa sì che non prenda le tue sembianze. Permetti al buio di diventare storia, consapevolezza,resilienza, perché non puoi conoscere la luce senza conoscere l’ombra e perché anche il sole e la luna fanno il loro giro. Come diceva Tiziano Ferro: vorrei ricordassi tra i drammi più brutti che il sole esiste per tutti.', event)">
+ <div class="image-container">
       <img src="tshirt3.png" alt="T-shirt retro" class="retro" />
       <img src="tshirt3-front.png" alt="T-shirt fronte" class="front" />
     </div>
@@ -223,8 +256,8 @@ body {
     <p>Passa sopra col mouse per vedere il fronte. Clicca per ingrandire.</p>
   </div>
 
-  <div class="product" onclick="openLightbox('tshirt4-front.png','tshirt4.png')">
-    <div class="image-container">
+ <div class="product" onclick="openLightbox('tshirt4-front.png','tshirt4.png', 'Che tu nel buio ti ci sia ritrovat* o ti ci sia nascost*, fa sì che quel buio non ti definisca, fa sì che non prenda le tue sembianze. Permetti al buio di diventare storia, consapevolezza, resilienza, perché non puoi conoscere la luce senza conoscere l’ombra e perché anche il sole e la luna fanno il loro giro. Come diceva Tiziano Ferro: vorrei ricordassi tra i drammi più brutti che il sole esiste per tutti.' , event)">
+ <div class="image-container">
       <img src="tshirt4.png" alt="T-shirt retro" class="retro" />
       <img src="tshirt4-front.png" alt="T-shirt fronte" class="front" />
     </div>
@@ -233,6 +266,7 @@ body {
   </div>
 
 </main>
+
 <section class="size-guide">
   <h2>Guida alle taglie</h2>
   <table>
@@ -284,14 +318,16 @@ body {
     <img id="lightbox-front" src="" alt="Fronte" />
     <img id="lightbox-retro" src="" alt="Retro" />
   </div>
+ <p id="lightbox-description" style="color: white; max-width: 80%; margin: 20px auto; text-align: center; font-size: 1rem;"></p>
 </div>
 
 <script>
-  function openLightbox(frontImg, retroImg) {
-    event.stopPropagation();
+  function openLightbox(frontImg, retroImg, description = '', e = null) {
+  if (e) e.stopPropagation();
     const lightbox = document.getElementById('lightbox');
     document.getElementById('lightbox-front').src = frontImg;
     document.getElementById('lightbox-retro').src = retroImg;
+    document.getElementById('lightbox-description').innerText = description;
     lightbox.style.display = 'flex';
   }
 
