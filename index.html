@@ -196,6 +196,39 @@
     .size-guide td {
       color: #ddd;
     }
+
+    .gallery {
+  max-width: 1000px;
+  margin: 80px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.gallery h2 {
+  font-size: 1.6rem;
+  color: #fff;
+  margin-bottom: 30px;
+}
+
+.gallery-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.03);
+  opacity: 0.9;
+}
+
   </style>
 </head>
 <body>
@@ -363,6 +396,20 @@ Il tuo corpo è qui. E questo basta. ❤️‍🩹.`,
   </table>
 </section>
 
+<section class="gallery">
+  <h2>Gallery</h2>
+  <div class="gallery-grid">
+    <img src="gallery1.jpeg" alt="T-shirt 1 indossata" onclick="openSingleLightbox('gallery1.jpeg')">
+    <img src="gallery2.jpeg" alt="T-shirt 2 indossata" onclick="openSingleLightbox('gallery2.jpeg')">
+    <img src="gallery3.jpeg" alt="T-shirt 3 indossata" onclick="openSingleLightbox('gallery3.jpeg')">
+    <img src="gallery4.jpeg" alt="T-shirt 4 indossata" onclick="openSingleLightbox('gallery4.jpeg')">
+    <img src="gallery5.jpeg" alt="T-shirt 5 indossata" onclick="openSingleLightbox('gallery5.jpeg')">
+    <img src="gallery6.jpeg" alt="T-shirt 6 indossata" onclick="openSingleLightbox('gallery6.jpeg')">
+    <!-- Aggiungi altre immagini se vuoi -->
+  </div>
+</section>
+
+
 <footer>
   Seguici su <a href="https://instagram.com/sottopelle.brand" target="_blank">Instagram</a> — oppure scrivici a <a href="mailto:sottopelle.brand@gmail.com">sottopelle.brand@gmail.com</a>
 </footer>
@@ -391,7 +438,67 @@ Il tuo corpo è qui. E questo basta. ❤️‍🩹.`,
     if(e) e.stopPropagation();
     document.getElementById('lightbox').style.display = 'none';
   }
+
+function openSingleLightbox(src) {
+  document.getElementById('single-lightbox-img').src = src;
+  document.getElementById('single-lightbox').style.display = 'flex';
+}
+
+function closeSingleLightbox() {
+  document.getElementById('single-lightbox').style.display = 'none';
+}
+const galleryImages = [
+  "gallery1.jpeg",
+  "gallery2.jpeg",
+  "gallery3.jpeg",
+  "gallery4.jpeg",
+  "gallery5.jpeg",
+  "gallery6.jpeg"
+];
+
+let currentImageIndex = 0;
+
+function openSingleLightbox(src) {
+  currentImageIndex = galleryImages.indexOf(src);
+  if (currentImageIndex === -1) currentImageIndex = 0;
+  updateLightboxImage();
+  document.getElementById('single-lightbox').style.display = 'flex';
+}
+
+function updateLightboxImage() {
+  document.getElementById('single-lightbox-img').src = galleryImages[currentImageIndex];
+}
+
+function nextImage(event) {
+  event.stopPropagation();
+  currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+  updateLightboxImage();
+}
+
+function prevImage(event) {
+  event.stopPropagation();
+  currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+  updateLightboxImage();
+}
+
+function closeSingleLightbox() {
+  document.getElementById('single-lightbox').style.display = 'none';
+}
+
+
 </script>
+
+<!-- Lightbox per la gallery -->
+<div id="single-lightbox" onclick="closeSingleLightbox()"
+     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:1001; justify-content:center; align-items:center; flex-direction:column;">
+  <span onclick="closeSingleLightbox()" style="position:absolute; top:20px; right:30px; font-size:2rem; color:#fff; cursor:pointer;">&times;</span>
+  <img id="single-lightbox-img" src="" alt="Gallery" style="max-width:90vw; max-height:80vh; border-radius:10px;">
+  <div style="margin-top: 20px;">
+    <button onclick="prevImage(event)" style="margin: 0 20px; font-size: 1.5rem;">⬅</button>
+    <button onclick="nextImage(event)" style="margin: 0 20px; font-size: 1.5rem;">➡</button>
+  </div>
+</div>
+
 
 </body>
 </html>
