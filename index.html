@@ -229,6 +229,32 @@
   opacity: 0.9;
 }
 
+.order-form {
+    padding: 60px 20px;
+    text-align: center;
+  }
+
+  .order-form h2 {
+    margin-bottom: 30px;
+  }
+
+  .form-container {
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .form-container iframe {
+    width: 100%;
+    min-height: 900px;
+    border: none;
+  }
+
+  @media (max-width: 600px) {
+    .form-container iframe {
+      min-height: 1200px;
+    }
+  }
   </style>
 </head>
 <body>
@@ -498,6 +524,18 @@ function closeSingleLightbox() {
     <button onclick="nextImage(event)" style="margin: 0 20px; font-size: 1.5rem;">➡</button>
   </div>
 </div>
+
+<section class="order-form">
+  <h2>Quello che senti lo porti addosso</h2>
+  <div class="form-container">
+    <iframe 
+      src="https://docs.google.com/forms/d/e/1FAIpQLSeg0jzGpUUWO_uQtS-Uexx21qcitIy14lGVHatkP0RI5VIITA/viewform?embedded=true" width="100" height="900" frameborder="0" marginheight="0" marginwidth="0"
+      title="Quello che senti lo porti addosso."
+      allowfullscreen>
+      Caricamento…
+    </iframe>
+  </div>
+</section>
 
 
 </body>
